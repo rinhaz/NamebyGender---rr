@@ -1,2 +1,1 @@
-#hello 
-hi!!
+Print "HI"
