@@ -1,2 +1,3 @@
-import pandas ad pd 
+import pandas as pd 
+
 
