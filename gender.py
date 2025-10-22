@@ -6,5 +6,9 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 data = pd.read_csv("gender_by_name.csv")
+X = data['Name']
+y = data['Gender']
+
+vectorizer
 
 
