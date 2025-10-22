@@ -23,9 +23,10 @@ Y_pred = model.predict(X_test)
 print(\n "Accuracy:", accuracy_sore(Y_test, Y_pred))
 print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 
-new_name = input()
+new_name = input("\n Type a name to predict gender: ")
 new_vec = vectorizer.transform([new_name])
-print("Predicted Gender:", model.predict())
+print("Predicted Gender:", model.predict(new_vec)[0])
+
 
 
 
