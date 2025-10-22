@@ -12,7 +12,7 @@ X = data['Name']
 y = data['Gender']
 
 vectorizer = CountVectorizer
-X = ????.... ** somthing is missing here idkkkk what!!
+X = vectorizer.fit_transform(X)
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, randome_state = 10) 
 
@@ -22,6 +22,11 @@ model.fit(X_train, Y_train)
 Y_pred = model.predict(X_test) 
 print(\n "Accuracy:", accuracy_sore(Y_test, Y_pred))
 print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
+
+new_name = input()
+new_vec = vectorizer.transform([new_name])
+print("Predicted Gender:", model.predict())
+
 
 
 
