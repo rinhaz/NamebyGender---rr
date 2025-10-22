@@ -6,9 +6,15 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 data = pd.read_csv("gender_by_name.csv")
+print(data.head(10))
+
 X = data['Name']
 y = data['Gender']
 
-vectorizer
+vectorizer = CountVectorizer
+X = ????.... ** somthing is missing here idkkkk what!!
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, randome_state = 10) 
+
 
 
