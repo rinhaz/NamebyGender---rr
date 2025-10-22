@@ -16,5 +16,11 @@ X = ????.... ** somthing is missing here idkkkk what!!
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, randome_state = 10) 
 
+model = KNeighborsClassifier(n_neighbors=3) 
+model.fit(X_train, Y_train)
+
+y_pred = model.predict(X_test) 
+
+
 
 
