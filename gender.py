@@ -20,6 +20,9 @@ model = KNeighborsClassifier(n_neighbors=3)
 model.fit(X_train, Y_train)
 
 Y_pred = model.predict(X_test) 
+print(\n "Accuracy:", accuracy_sore(Y_test, Y_pred))
+print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
+
 
 
 
