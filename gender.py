@@ -19,7 +19,8 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, rando
 model = KNeighborsClassifier(n_neighbors=3) 
 model.fit(X_train, Y_train)
 
-y_pred = model.predict(X_test) 
+Y_pred = model.predict(X_test) 
+
 
 
 
