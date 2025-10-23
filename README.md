@@ -11,8 +11,19 @@ Features:
 
 
 Dataset
-The progran uses a CSV file like this: 
+The program uses a CSV file like this: 
 
-  Name      Gender 
+  Name      Gender  
   Anna      Female
   James     Male
+
+  How to run the code:
+  Download or clone the project.
+ git> Clone: https://github.com/rinhaz/NamebyGender---rr
+ pip install pandas scikit-learn
+ python gender.py
+ 
+  
+
+  
+  
