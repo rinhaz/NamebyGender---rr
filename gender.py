@@ -42,6 +42,15 @@ if  userchice == '2':
     model.fix(X_train, Y_train)
     print("\n Model trained")
 
+if userchoice == '3':
+    use_file = input("Do you want to load another CSV file ? ")
+    if use_file.lower() == 'y':
+        test_file = input("Enter test dataset name: ")
+        test_data = pd.read_csv(test_file)
+        X_eval = vectorizer.transform(test_data['Name'])
+        Y_eval = test_data['Gender']
+    else:
+
 
 model = KNeighborsClassifier(n_neighbors=3) 
 model.fit(X_train, Y_train)
@@ -53,6 +62,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
