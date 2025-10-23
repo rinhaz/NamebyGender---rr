@@ -32,6 +32,12 @@ if  userchice == '2':
     print ("\n Choose a model to train:")
     print("1: K-Nearest Neighbors (KNN)")
     print("2. Decision Tree Classifier")
+  choice = input("Enter 1 or 2: ")
+    if choice == '1':
+        model = KNeighborsClassifier(n_neighbors=3)
+        print("Using KNN Classifier...")
+    else:
+        model = DecisionTreeClassifier(random_state=10)
 
 
 model = KNeighborsClassifier(n_neighbors=3) 
@@ -44,6 +50,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
