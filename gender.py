@@ -38,6 +38,9 @@ if  userchice == '2':
         print("Using KNN Classifier...")
     else:
         model = DecisionTreeClassifier(random_state=10)
+        print("Using Decision Tree Classifier...")
+    model.fix(X_train, Y_train)
+    print("\n Model trained")
 
 
 model = KNeighborsClassifier(n_neighbors=3) 
@@ -50,6 +53,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
