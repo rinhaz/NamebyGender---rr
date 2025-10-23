@@ -4,9 +4,19 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import accuracy_score, confusion_matrix
 from sklearn.feature_extraction.text import CountVectorizer
 
-
+dataset_name = input("Enter the following dataset name: ")
 data = pd.read_csv("gender_by_name.csv")
-print(data.head(10))
+print(" Dataset loaded successfully!")
+
+
+print("Choose one of the following:")
+print("1. Show dataset info")
+print("2. Train a model")
+print("3. Evaluate model")
+print("4. Predict new name")
+print("5. Exit")
+
+userchoice = input("Choose: ")
 
 X = data['Name']
 y = data['Gender']
@@ -26,6 +36,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
