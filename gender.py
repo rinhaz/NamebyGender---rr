@@ -62,6 +62,18 @@ cr = classification_report(Y_eval, Y_pred, zero_division =0)
 print("Evaluation Results:")
 print("Accuracy:", round(acc, 4))
 print("Confusion Matrix:\n", cm)
+print("\nClassification Report:\n", cr)
+
+    if input("\nSave results to a file? (y/n): ").lower() == 'y':
+        with open(input("Enter filename (e.g. results.txt): "), 'w') as f:
+            f.write(f"Accuracy: {acc}\nConfusion Matrix:\n{cm}\nClassification Report:\n{cr}\n")
+        print(" Results saved!")
+
+if userchoice == '4':
+    simulate = input("\nDo you want to predict a new name? (y/n): ")
+    if simulate.lower() == 'y':
+
+
 
 
 
@@ -72,6 +84,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
