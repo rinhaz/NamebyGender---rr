@@ -18,13 +18,21 @@ print("5. Exit")
 
 userchoice = input("Choose: ")
 
-X = data['Name']
-y = data['Gender']
+if userchoice == '1':
+  print(data.head(10))
+  print("/N Basic statistics:", data.describe())
 
-vectorizer = CountVectorizer
-X = vectorizer.fit_transform(X)
+if  userchice == '2':
+    X = data['Name']
+    y = data['Gender']
+    vectorizer = CountVectorizer(analyzer='char')
+    X = vectorizer.fit_transform(X)
+    X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, randome_state = 10) 
 
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test size = 0.2, randome_state = 10) 
+    print ("\n Choose a model to train:")
+    print("1: K-Nearest Neighbors (KNN)")
+    print("2. Decision Tree Classifier")
+
 
 model = KNeighborsClassifier(n_neighbors=3) 
 model.fit(X_train, Y_train)
@@ -36,6 +44,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
