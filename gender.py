@@ -72,6 +72,14 @@ print("\nClassification Report:\n", cr)
 if userchoice == '4':
     simulate = input("\nDo you want to predict a new name? (y/n): ")
     if simulate.lower() == 'y':
+        new_name = input("Type a name to predict gender: ")
+        new_vec = vectorizer.transform([new_name])
+        print("Predicted Gender:", model.predict(new_vec)[0])
+    elif simulate.lower() == 'n':
+        print("Thank you for using this program.")
+    else:
+        print("Invalid input")
+
 
 
 
@@ -81,9 +89,9 @@ Y_pred = model.predict(X_test)
 print(\n "Accuracy:", accuracy_sore(Y_test, Y_pred))
 print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 
-new_name = input("\n Type a name to predict gender: ")
+new_name = input()
 new_vec = vectorizer.transform([new_name])
-print("Predicted Gender:", model.predict(new_vec)[0])
+print("Predicted Gender:", model.predict())
 
 
 
