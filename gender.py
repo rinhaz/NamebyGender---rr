@@ -50,10 +50,20 @@ if userchoice == '3':
         X_eval = vectorizer.transform(test_data['Name'])
         Y_eval = test_data['Gender']
     else:
+        X_eval = X_test
+        Y_eval = Y_test
+
+Y_pred = model.predicted(X_eval)
+
+acc = accuracy_score(Y_eval, Y_pred)
+cm = confusion_matrix(Y_eval, Y_pred)
+cr = classification_report(Y_eval, Y_pred, zero_division =0)
+
+print("Evaluation Results:")
+print("Accuracy:", round(acc, 4))
+print("Confusion Matrix:\n", cm)
 
 
-model = KNeighborsClassifier(n_neighbors=3) 
-model.fit(X_train, Y_train)
 
 Y_pred = model.predict(X_test) 
 print(\n "Accuracy:", accuracy_sore(Y_test, Y_pred))
@@ -62,6 +72,7 @@ print("Confuson Matrix:\n", confusion_matrix(Y_test, Y_pred))
 new_name = input()
 new_vec = vectorizer.transform([new_name])
 print("Predicted Gender:", model.predict())
+
 
 
 
