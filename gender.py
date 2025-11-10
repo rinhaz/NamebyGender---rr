@@ -105,7 +105,6 @@ print("\nChoose a model to train:")
                    f.write(f"Accuracy: {acc}\nConfusion Matrix:\n{cm}\nClassification Report:\n{cr}\n")
                print("Results saved!")
                      
-                        
    elif userchoice == '4':
     if model is None or prep is None:
         print("You need to train a model first (option 2).")
@@ -143,6 +142,7 @@ print("\nChoose a model to train:")
     print(f"Predicted Gender for '{new_name}': {prediction}")
 
 
+
        
 
 
@@ -156,5 +156,6 @@ print("\nChoose a model to train:")
       print(" Invalid choice:( Please choose a number between 1 and 5:-)")
 
  
+
 
 
