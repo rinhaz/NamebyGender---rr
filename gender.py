@@ -105,35 +105,45 @@ print("\nChoose a model to train:")
                    f.write(f"Accuracy: {acc}\nConfusion Matrix:\n{cm}\nClassification Report:\n{cr}\n")
                print("Results saved!")
                      
+                        
    elif userchoice == '4':
     if model is None or prep is None:
-        print("You have to train a model first (choose option 2).")
-    else:
-        # Ask user for all three inputs
-        new_name = input("Type a name to predict gender: ")
+        print("You need to train a model first (option 2).")
+        continue
+
+
+ 
+    new_name = input("Enter a name: ").strip()
+    if not new_name.isalpha():
+        print("Name must contain only letters (A–Z).")
+        continue
+
+
+   
+    try:
+        new_count = float(input("Enter count (a number): "))
+        new_prob = float(input("Enter probability (0–1): "))
+
+
+        if not 0 <= new_prob <= 1:
+            print("Probability must be between 0 and 1.")
+            continue
+    except ValueError:
+        print("Please enter valid numbers for count and probability.")
+        continue
+
+
+    # Make prediction
+    new_df = pd.DataFrame([[new_name, new_count, new_prob]],
+                          columns=["Name", "Count", "Probability"])
+
+
+    new_vec = prep.transform(new_df)
+    prediction = model.predict(new_vec)[0]
+    print(f"Predicted Gender for '{new_name}': {prediction}")
+
+
        
-        try:
-            new_count = float(input("Enter the count value (number): "))
-            new_prob = float(input("Enter the probability value (0–1): "))
-        except ValueError:
-            print("Invalid input! Please enter numeric values for count and probability.")
-            continue  # return to main menu without crashing
-
-
-        # Create a DataFrame from user inputs
-        new_df = pd.DataFrame(
-            [[new_name, new_count, new_prob]],
-            columns=["Name", "Count", "Probability"]
-        )
-
-
-       
-        new_vec = prep.transform(new_df)
-
-
-        # Predict gender
-        prediction = model.predict(new_vec)[0]
-        print(f"Predicted Gender for '{new_name}': {prediction}")
 
 
 
@@ -146,4 +156,5 @@ print("\nChoose a model to train:")
       print(" Invalid choice:( Please choose a number between 1 and 5:-)")
 
  
+
 
