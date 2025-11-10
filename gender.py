@@ -56,4 +56,94 @@ while True:
      
        features_train,features_test,target_train, target_test = train_test_split(
            features, target, test_size= 0.2, random_state=42)
+
+
+print("\nChoose a model to train:")
+       print("1. K-Nearest Neighbors (KNN)")
+       print("2. Decision Tree Classifier")
+       choice = input("Enter 1 or 2: ")
+       
+       
+       if choice == '1':
+          model = KNeighborsClassifier(n_neighbors=3)
+          print("Using KNN Classifier...")
+       elif choice == '2':
+          model = DecisionTreeClassifier(random_state=10)
+          print("Using Decision Tree Classifier...")
+          prep_features_train = prep.fit_transform(features_train)
+          model.fit(prep_features_train, target_train)
+          print("\n model trained")
+       else:
+           print("Invalid choice, choose one or two")
+           continue
+       prep_features_train = prep.fit_transform(features_train)
+       model.fit(prep_features_train, target_train)
+       print("\nModel trained successfully!")
+           
+
+         
+   elif userchoice == '3':
+       if model is None or prep is None:
+           print("You need to train a model first (option 2).")
+       else:
+           prep_features_test = prep.transform(features_test)
+           predictions = model.predict(prep_features_test)
+           acc = accuracy_score(target_test, predictions)
+           cm = confusion_matrix(target_test, predictions)
+           cr = classification_report(target_test, predictions)
+           
+           print("\nEvaluation Results:")
+           print("Accuracy:", round(acc, 4))
+           print("Confusion Matrix:\n", cm)
+           print("\nClassification Report:\n", cr)
+
+
+
+           if input("\nSave results to a file? (y/n): ").lower() == 'y':
+               filename = input("Enter filename (e.g., results.txt): ")
+               with open(filename, 'w') as f:
+                   f.write(f"Accuracy: {acc}\nConfusion Matrix:\n{cm}\nClassification Report:\n{cr}\n")
+               print("Results saved!")
+                     
+   elif userchoice == '4':
+    if model is None or prep is None:
+        print("You have to train a model first (choose option 2).")
+    else:
+        # Ask user for all three inputs
+        new_name = input("Type a name to predict gender: ")
+       
+        try:
+            new_count = float(input("Enter the count value (number): "))
+            new_prob = float(input("Enter the probability value (0–1): "))
+        except ValueError:
+            print("Invalid input! Please enter numeric values for count and probability.")
+            continue  # return to main menu without crashing
+
+
+        # Create a DataFrame from user inputs
+        new_df = pd.DataFrame(
+            [[new_name, new_count, new_prob]],
+            columns=["Name", "Count", "Probability"]
+        )
+
+
+       
+        new_vec = prep.transform(new_df)
+
+
+        # Predict gender
+        prediction = model.predict(new_vec)[0]
+        print(f"Predicted Gender for '{new_name}': {prediction}")
+
+
+
+
+   elif userchoice == '5':
+      print("Exiting the program. Thanks for today!!!")
+      break
  
+   else:
+      print(" Invalid choice:( Please choose a number between 1 and 5:-)")
+
+ 
+
